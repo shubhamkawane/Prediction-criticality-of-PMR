@@ -1,0 +1,104 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row >
+        <button mat-button (click)="sidenav.toggle()">
+            <mat-icon class="example-icon">info</mat-icon>    
+        </button>
+        <span class="example-spacer"></span>
+        <span>PMR SEVERITY PREDICT APPLICATION</span>
+    </mat-toolbar-row>
+
+ </mat-toolbar>
+
+
+ <mat-sidenav-container class="example-containers">
+        
+        <mat-sidenav #sidenav mode="side" opened="true" class="sidenav">
+                <mat-accordion>
+                        <mat-expansion-panel>
+                          <mat-expansion-panel-header>
+                            <mat-panel-title>
+                              Filters
+                            </mat-panel-title>
+                            <mat-panel-description>
+                              Select to apply filters
+                            </mat-panel-description>
+                          </mat-expansion-panel-header>
+                          <form class="example-form">
+                                <mat-form-field class="example-full-width">
+                                    <mat-select placeholder="Select Category">
+                                        <mat-option *ngFor="let val of category" [value]="val.viewValue">
+                                        {{ val.viewValue }}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                      
+
+                                <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Type Filter Text" value="">
+                                </mat-form-field>
+                                <button mat-raised-button>Apply</button>
+                          </form>
+
+                        </mat-expansion-panel>
+                </mat-accordion>
+                      
+        </mat-sidenav>
+
+
+        <mat-sidenav-content class="example-sidenav-content">
+                <div class="example-container ">
+                        <mat-table #table [dataSource]="dataSource">
+                      
+                          <!-- Position Column -->
+                          <ng-container matColumnDef="pid">
+                            <mat-header-cell *matHeaderCellDef> PMR ID </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.pid}} </mat-cell>
+                          </ng-container>
+                      
+                          <!-- Name Column -->
+                          <ng-container matColumnDef="ptitle">
+                            <mat-header-cell *matHeaderCellDef> PMR TITLE </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
+                          </ng-container>
+                      
+                          <!-- Weight Column -->
+                          <ng-container matColumnDef="owner">
+                            <mat-header-cell *matHeaderCellDef> OWNER </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.owner}} </mat-cell>
+                          </ng-container>
+                      
+                          <!-- Symbol Column -->
+                          <ng-container matColumnDef="cs">
+                            <mat-header-cell *matHeaderCellDef> CURRENT SEVERITY </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.current}} </mat-cell>
+                          </ng-container>
+                      
+                           <!-- Symbol Column -->
+                           <ng-container matColumnDef="ps">
+                                <mat-header-cell *matHeaderCellDef> PREDICTED SEVERITY </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.predicted}} </mat-cell>
+                            </ng-container>
+
+                          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                        </mat-table>
+                      
+                        <mat-paginator #paginator
+                                       [pageSize]="10"
+                                       [pageSizeOptions]="[5, 10, 20]"
+                                       [showFirstLastButtons]="true">
+                        </mat-paginator>
+                      </div>
+                      
+                      
+
+        </mat-sidenav-content>
+
+</mat-sidenav-container>
+
+
+
+
+        
+    
+    
