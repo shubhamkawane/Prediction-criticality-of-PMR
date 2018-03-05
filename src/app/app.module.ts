@@ -17,12 +17,15 @@ import {MatInputModule} from '@angular/material/input';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSelectModule} from '@angular/material/select'
+import {GetDataService} from './get-data.service';
+import { HttpModule } from '@angular/http'
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
+    HttpModule,
     BrowserModule,
     BrowserAnimationsModule,
     MatCheckboxModule,
@@ -43,7 +46,7 @@ import {MatSelectModule} from '@angular/material/select'
     MatSelectModule
   ],
 
-  providers: [],
+  providers: [GetDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

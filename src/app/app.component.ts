@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {GetDataService} from './get-data.service';
 
 @Component({
   selector: 'app-root',
@@ -6,11 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  constructor(public dataService:GetDataService){
+        this.dataService.getOrderSummary().subscribe(res => {
+        console.log(res);
+        this.dataSource = res});
+  }
   title = 'app';
   displayedColumns = ['pid', 'ptitle', 'owner', 'cs', 'ps'];
-  dataSource = ELEMENT_DATA;
-
-
+  dataSource:any =[]; 
+  
+  
   category = [
     { viewValue: 'PMR ID'},
     { viewValue: 'PMR TITLE'},
@@ -18,6 +24,7 @@ export class AppComponent {
     { viewValue: 'CURRENT SEVERITY'},
     { viewValue: 'PREDICTED SEVERITY'}
   ];
+  
 }
 
 export interface Element {
@@ -29,17 +36,4 @@ export interface Element {
 
 }
 
-const ELEMENT_DATA: Element[] = [
-  {pid: 172847, title: 'ISIM Rest API', owner: 'Divya Girase', current: 'High', predicted: 'Low'},
-  {pid: 172482, title: 'ISIM OOM Failures', owner: 'Sachin Babar', current: 'High', predicted: 'Medium'},
-  {pid: 172843, title: 'ISIM JAVA', owner: 'Kajal Doshi', current: 'High', predicted: 'Low'},
-  {pid: 172422, title: 'ISIM C++', owner: 'Vinay Shet', current: 'High', predicted: 'Medium'},
-  {pid: 172147, title: 'ISIM DBMs', owner: 'Shirish Agale', current: 'High', predicted: 'Low'},
-  {pid: 172412, title: 'ISIM Registration', owner: 'Divya Girase', current: 'High', predicted: 'Medium'},
-  {pid: 172847, title: 'ISIM Rest API', owner: 'Divya Girase', current: 'High', predicted: 'Low'},
-  {pid: 172482, title: 'ISIM OOM Failures', owner: 'Sachin Babar', current: 'High', predicted: 'Medium'},
-  {pid: 172843, title: 'ISIM JAVA', owner: 'Kajal Doshi', current: 'High', predicted: 'Low'},
-  {pid: 172422, title: 'ISIM C++', owner: 'Vinay Shet', current: 'High', predicted: 'Medium'},
-  {pid: 172147, title: 'ISIM DBMs', owner: 'Shirish Agale', current: 'High', predicted: 'Low'},
-  {pid: 172412, title: 'ISIM Registration', owner: 'Divya Girase', current: 'High', predicted: 'Medium'},
-];
+
