@@ -18,14 +18,21 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSelectModule} from '@angular/material/select'
 import {GetDataService} from './get-data.service';
-import { HttpModule } from '@angular/http'
+import { HttpModule } from '@angular/http';
+import {HttpClientModule} from '@angular/common/http';
+import {FormUploadComponent} from './upload/form-upload/form-upload.component';
+import {UploadFileService} from './upload/upload-file.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    
+    FormUploadComponent
+    
   ],
   imports: [
     HttpModule,
+    HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
     MatCheckboxModule,
@@ -46,7 +53,7 @@ import { HttpModule } from '@angular/http'
     MatSelectModule
   ],
 
-  providers: [GetDataService],
+  providers: [GetDataService,UploadFileService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

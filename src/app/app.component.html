@@ -14,30 +14,17 @@
         
         <mat-sidenav #sidenav mode="side" opened="true" class="sidenav">
                 <mat-accordion>
+                        
                         <mat-expansion-panel>
                           <mat-expansion-panel-header>
                             <mat-panel-title>
-                              Filters
+                              File-Upload
                             </mat-panel-title>
                             <mat-panel-description>
-                              Select to apply filters
+                              Select file to upload
                             </mat-panel-description>
                           </mat-expansion-panel-header>
-                          <form class="example-form">
-                                <mat-form-field class="example-full-width">
-                                    <mat-select placeholder="Select Category">
-                                        <mat-option *ngFor="let val of category" [value]="val.viewValue">
-                                        {{ val.viewValue }}
-                                        </mat-option>
-                                    </mat-select>
-                                </mat-form-field>
-                                      
-
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Type Filter Text" value="">
-                                </mat-form-field>
-                                <button mat-raised-button>Apply</button>
-                          </form>
+                          <form-upload></form-upload>
 
                         </mat-expansion-panel>
                 </mat-accordion>
